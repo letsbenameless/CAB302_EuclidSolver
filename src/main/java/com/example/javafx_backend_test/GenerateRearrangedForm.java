@@ -17,32 +17,32 @@ public class GenerateRearrangedForm {
             switch (op) {
                 case 0 -> { // Add constant
                     int k = rand(1, 10);
-                    left = new StringBuilder().append("(").append(left).append(") + (").append(k).append(")").toString();
-                    right = new StringBuilder().append("(").append(right).append(") + (").append(k).append(")").toString();
+                    left = "(" + left + ") + (" + k + ")";
+                    right = "(" + right + ") + (" + k + ")";
                 }
                 case 1 -> { // Subtract constant
                     int k = rand(1, 10);
-                    left = new StringBuilder().append("(").append(left).append(") - (").append(k).append(")").toString();
-                    right = new StringBuilder().append("(").append(right).append(") - (").append(k).append(")").toString();
+                    left = "(" + left + ") - (" + k + ")";
+                    right = "(" + right + ") - (" + k + ")";
                 }
                 case 2 -> { // Multiply
                     int k = rand(2, 4);
-                    left = new StringBuilder().append("(").append(k).append(") * (").append(left).append(")").toString();
-                    right = new StringBuilder().append("(").append(k).append(") * (").append(right).append(")").toString();
+                    left = "(" + k + ") * (" + left + ")";
+                    right = "(" + k + ") * (" + right + ")";
                 }
                 case 3 -> { // Divide
                     int k = rand(2, 4);
-                    left = new StringBuilder().append("(").append(left).append(") / (").append(k).append(")").toString();
-                    right = new StringBuilder().append("(").append(right).append(") / (").append(k).append(")").toString();
+                    left = "(" + left + ") / (" + k + ")";
+                    right = "(" + right + ") / (" + k + ")";
                 }
                 case 4 -> { // Square
-                    left = new StringBuilder().append("(").append(left).append(") ^ (2)").toString();
-                    right = new StringBuilder().append("(").append(right).append(") ^ (2)").toString();
+                    left = "(" + left + ") ^ (2)";
+                    right = "(" + right + ") ^ (2)";
                 }
                 case 5 -> { // Square root (only if aVal ≥ 0)
                     if (aVal >= 0) {
-                        left = new StringBuilder().append("sqrt(").append(left).append(")").toString();
-                        right = new StringBuilder().append("sqrt(").append(right).append(")").toString();
+                        left = "sqrt(" + left + ")";
+                        right = "sqrt(" + right + ")";
                     }
                 }
             }
