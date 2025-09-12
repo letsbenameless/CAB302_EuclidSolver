@@ -32,7 +32,7 @@ public class userProblemHandler {
     /**
      * Create a new question:
      * - Uses problemGenerator to get (expr, answer)  → e.g., "(...)+(...)", "42"
-     * - Uses GenerateRearrangedForm to get "a = ( ... )"
+     * - Wraps expression as "a = ( ... )"
      * - Converts that to LaTeX via latexParser for front-end rendering
      */
     public static QuestionDTO nextQuestion() {
@@ -41,8 +41,8 @@ public class userProblemHandler {
         String answerStr = pair[1];
         double answer = Double.parseDouble(answerStr);
 
-        // Rearrange to "a = ( ... )"
-        String rearranged = GenerateRearrangedForm.from(expr, answerStr);
+        // Simple equation: "a = (expr)"
+        String rearranged = "a = (" + expr + ")";
 
         // Convert the entire equation to LaTeX with the parser (handles whitespace, ops, sqrt, ^, frac, etc.)
         String equationLatex = normalizeLatex(latexParser.toLatex(rearranged));
