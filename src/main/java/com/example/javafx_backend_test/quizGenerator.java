@@ -16,7 +16,7 @@ import java.io.File;
  */
 public class quizGenerator {
 
-    // Immutable record of what happened for each question.
+    // Imutable record of what happened for each question.
     public static class QuestionResult {
         public final String expr;            // original arithmetic expression
         public final String rearranged;      // "a = ( ... )" before LaTeX
