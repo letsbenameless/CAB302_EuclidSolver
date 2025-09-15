@@ -81,6 +81,13 @@
     </HBox>
 
 
+    <HBox>
+
+        <Button text="Undo" fx:id="undoButton" styleClass="primary-button"/>
+        <Button text="Redo" fx:id="redoButton" styleClass="primary-button"/>
+        <Button text="Clear" fx:id="clearButton" styleClass="primary-button"/>
+
+    </HBox>
     <HBox styleClass="notepad" alignment="CENTER">
         <Canvas fx:id="notepadCanvas" width="1200" height="300"/>
     </HBox>
