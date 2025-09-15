@@ -16,7 +16,7 @@ import java.io.File;
  */
 public class quizGenerator {
 
-    // Imutable record of what happened for each question.
+    // Immutable record of what happened for each question.
     public static class QuestionResult {
         public final String expr;            // original arithmetic expression
         public final String rearranged;      // "a = ( ... )" before LaTeX
@@ -49,15 +49,15 @@ public class quizGenerator {
     private final scoreKeeper scoreKeeper;
     private int currentIndex = -1;
 
+    private static final int PRELOAD_COUNT = 3;
+
     public quizGenerator(int numQuestions) {
         this.NUM_QUESTIONS = numQuestions;
         this.scoreKeeper = new scoreKeeper(numQuestions);
 
         // Pre-generate all questions so the UI can preload images, etc.
         questions = new ArrayList<>(NUM_QUESTIONS);
-        for (int i = 0; i < NUM_QUESTIONS; i++) {
-            questions.add(userProblemHandler.nextQuestion());
-        }
+        generateUpTo(PRELOAD_COUNT);
     }
 
     // ------ UI-friendly API ------
@@ -76,6 +76,7 @@ public class quizGenerator {
             throw new IllegalStateException("No more questions.");
         }
         currentIndex++;
+        generateUpTo(currentIndex + 1 + PRELOAD_COUNT);
         return questions.get(currentIndex);
     }
 
@@ -120,6 +121,20 @@ public class quizGenerator {
         return NUM_QUESTIONS;
     }
 
+    public userProblemHandler.QuestionDTO peekNextQuestion() {
+        int nextIndex = currentIndex + 1;
+        if (nextIndex >= NUM_QUESTIONS) return null;
+        generateUpTo(nextIndex + 1 + PRELOAD_COUNT);
+        return questions.get(nextIndex);
+    }
+
+    /** Peek at a specific question index without advancing. */
+    public userProblemHandler.QuestionDTO peekQuestion(int index) {
+        if (index < 0 || index >= NUM_QUESTIONS) return null;
+        generateUpTo(index + 1);
+        return questions.get(index);
+    }
+
     public scoreKeeper getScoreKeeper() {
         return scoreKeeper;
     }
@@ -132,6 +147,13 @@ public class quizGenerator {
         var q = getCurrentQuestion();
         if (q == null) throw new IllegalStateException("Call nextQuestion() before submitting an answer.");
         return q;
+    }
+
+    private void generateUpTo(int targetCount) {
+        int target = Math.min(targetCount, NUM_QUESTIONS);
+        while (questions.size() < target) {
+            questions.add(userProblemHandler.nextQuestion());
+        }
     }
 
     // --- Utility for pretty-printing answers like before ---

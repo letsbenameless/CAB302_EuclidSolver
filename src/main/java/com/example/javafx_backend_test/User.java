@@ -8,6 +8,17 @@ public class User {
     // ^ creates the fields that the users need to add to their account
 
     public User(int userID, String username, String email, String password) {
+
+        if (username == null || username.trim().isEmpty()) {
+            throw new IllegalArgumentException("Username cannot be null or empty");
+        }
+        if (email == null || email.trim().isEmpty()) {
+            throw new IllegalArgumentException("Email cannot be null or empty");
+        }
+        if (password == null || password.trim().isEmpty()) {
+            throw new IllegalArgumentException("Password cannot be null or empty");
+        }
+
         this.userID = userID;
         this.username = username;
         this.email = email;

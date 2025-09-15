@@ -6,10 +6,17 @@ import javafx.geometry.Pos;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
+import javafx.scene.control.TextField;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.HBox;
 import javafx.scene.paint.Color;
 
+import java.io.IOException;
+import java.net.URLEncoder;
+import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Stack;
@@ -17,17 +24,89 @@ import java.util.Stack;
 public class PracticeController {
 
 
+    private quizGenerator engine;
+    private Image[] imageCache;
+
+
+    @FXML private Label scoreLabel;
+    @FXML private TextField answerField;
+    @FXML private Button checkButton;
+    @FXML private ImageView questionView;
+
+    @FXML private Label answerLabel;
+
+
 
     @FXML
-    private void handleExitQuiz() {
-
+    private void handleExitQuiz() throws IOException {
+        LoadScene loadScene = new LoadScene(Main.getPrimaryStage());
+        loadScene.render("main-scene.fxml", "main-styles.css");
     }
 
 
     @FXML
     private void handleCheckAnswer() {
+        System.out.println("Checking Answer");
 
+        System.out.println(engine);
+
+        var q = engine.getCurrentQuestion();
+        System.out.println(q);
+
+        if (q == null) {
+            return;
+        }
+        engine.submitAnswer(answerField.getText());
+        scoreLabel.setText("Score: " + engine.getScoreKeeper().getCorrect() + "/" + engine.getScoreKeeper().getAttempted());
+
+        if (engine.hasNextQuestion()) {
+            loadNextQuestion();
+            answerField.clear();
+        } else {
+            checkButton.setDisable(true);
+            answerField.setDisable(true);
+        }
     }
+
+    private void loadNextQuestion() {
+        var q = engine.nextQuestion();
+        int idx = engine.getCurrentIndex();
+        if (imageCache[idx] != null) {
+            questionView.setImage(imageCache[idx]);
+        } else {
+            questionView.setImage(new Image(buildLatexUrl(q.equationLatex)));
+        }
+        /*plainLabel.setText("Plain: " + q.rearrangedRaw);
+        latexLabel.setText("LaTeX: " + q.equationLatex);*/
+        answerLabel.setText("Answer: " + q.correctAnswer);
+
+        // Start preloading the subsequent questions' images.
+        preloadImagesAhead();
+    }
+
+    /** Preload images for the next few questions. */
+    private void preloadImagesAhead() {
+        int start = engine.getCurrentIndex() + 1;
+        for (int i = start; i < start + 3 && i < engine.getTotalQuestions(); i++) {
+            if (imageCache[i] == null) {
+                var q = engine.peekQuestion(i);
+                if (q != null) {
+                    imageCache[i] = new Image(buildLatexUrl(q.equationLatex), true);
+                }
+            }
+        }
+    }
+
+    private static String buildLatexUrl(String latex) {
+        String fullLatex = "\\dpi{200}\\bg{white} \\displaystyle " + latex;
+        String encoded = URLEncoder.encode(fullLatex, StandardCharsets.UTF_8).replace("+", "%20");
+        return "https://latex.codecogs.com/png.latex?" + encoded;
+    }
+
+
+
+
+    /* NOTEBOOK DRAWING FUNCTION */
 
 
     @FXML private Canvas notepadCanvas;
@@ -59,9 +138,14 @@ public class PracticeController {
     private double lastX, lastY;
 
 
-
     @FXML
     private void initialize() {
+
+        engine = new quizGenerator(30);
+        imageCache = new Image[30];
+
+        loadNextQuestion();
+
         gc = notepadCanvas.getGraphicsContext2D();
 
         // Set default pen style
