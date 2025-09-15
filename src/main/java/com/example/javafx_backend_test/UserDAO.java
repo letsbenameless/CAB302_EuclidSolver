@@ -70,4 +70,56 @@ public class UserDAO {
         return accounts;
     }
 
+
+
+    public User getUserByUsername(String username) {
+        User user = null;
+
+        String sql = "SELECT userID, username, email, password FROM users WHERE username = ?";
+
+        try (PreparedStatement stmt = connection.prepareStatement(sql)) {
+            stmt.setString(1, username);
+            ResultSet rs = stmt.executeQuery();
+
+            if (rs.next()) {
+                user = new User(
+                        rs.getInt("userID"),
+                        rs.getString("username"),
+                        rs.getString("email"),
+                        rs.getString("password")
+                );
+            }
+        } catch (SQLException ex) {
+            System.err.println("Error fetching user: " + ex.getMessage());
+        }
+
+        return user;
+    }
+
+
+    public User getUserByEmail(String email) {
+        User user = null;  // initialize as null, so we can return null if not found
+
+        String sql = "SELECT userID, username, email, password FROM users WHERE email = ?";
+
+        try (PreparedStatement stmt = connection.prepareStatement(sql)) {
+            stmt.setString(1, email);
+            ResultSet rs = stmt.executeQuery();
+
+            if (rs.next()) {
+                user = new User(
+                        rs.getInt("userID"),
+                        rs.getString("username"),
+                        rs.getString("email"),
+                        rs.getString("password")
+                );
+            }
+        } catch (SQLException ex) {
+            System.err.println("Error fetching user: " + ex.getMessage());
+        }
+
+        return user;
+    }
+
+
 }
