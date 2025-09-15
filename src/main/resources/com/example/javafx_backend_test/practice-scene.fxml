@@ -8,54 +8,83 @@
 <?import javafx.scene.image.*?>
 
 
-<BorderPane xmlns="http://javafx.com/javafx"
-            xmlns:fx="http://javafx.com/fxml"
-            fx:controller="com.example.javafx_backend_test.SignInController"
-            prefHeight="400.0" prefWidth="600.0">
+<!--<VBox xmlns="http://javafx.com/javafx"-->
+<!--            xmlns:fx="http://javafx.com/fxml"-->
+<!--            fx:controller="com.example.javafx_backend_test.PracticeController"-->
+<!--            prefHeight="400.0" prefWidth="600.0">-->
 
-    <!-- Left side -->
-    <left>
-        <StackPane styleClass="left-pane">
-            <ImageView fx:id="logoImage" fitWidth="500" preserveRatio="true">
-                <image>
-                    <Image url="@images/logo.png" />
-                </image>
-            </ImageView>
+<!--    <HBox spacing="50">-->
 
-        </StackPane>
-    </left>
+<!--        <HBox>-->
+<!--            <Label text="5m 34s remaining" />-->
+<!--        </HBox>-->
 
-    <!-- Right side -->
-    <center>
-        <VBox alignment="CENTER_LEFT" spacing="30" styleClass="right-pane">
+<!--        <HBox alignment="TOP_RIGHT">-->
 
-            <!-- Register Section -->
-            <VBox spacing="10" alignment="TOP_LEFT">
+<!--            <Label text="Score 0 / 7" />-->
 
-                <Label text="Register" styleClass="section-title"/>
-                <Label text="Sign up for a new account and start your learning journey today!" styleClass="copy" />
+<!--            <Button text="Exit Quiz" onAction="#handleExitQuiz" styleClass="primaryButton" />-->
 
-                <TextField fx:id="registrationUsername" promptText="Username" />
-                <TextField fx:id="registrationEmail" promptText="Email" />
-                <PasswordField fx:id="registrationPassword" promptText="Password" />
+<!--        </HBox>-->
 
-                <Label fx:id="registrationError" styleClass="error-text" />
-                <Button text="Register" onAction="#handleRegister" styleClass="primaryButton"/>
-            </VBox>
+<!--    </HBox>-->
 
-            <!-- Sign In Section -->
-            <VBox spacing="10" alignment="TOP_LEFT">
+<!--    <ImageView fx:id="logoImage" fitWidth="300" preserveRatio="true">-->
+<!--        <image>-->
+<!--            <Image url="@images/example-question.png" />-->
+<!--        </image>-->
+<!--    </ImageView>-->
 
-                <Label text="Sign In" styleClass="section-title" />
-                <Label text="Already have an account? Sign in with your email and password." styleClass="copy" />
+<!--    <VBox  spacing="30" >-->
 
-                <TextField fx:id="loginEmail" promptText="Email" />
-                <PasswordField fx:id="loginPassword" promptText="Password" />
 
-                <Label fx:id="loginError" styleClass="error-text" />
-                <Button text="Sign In" onAction="#handleSignIn" styleClass="primaryButton" />
-            </VBox>
-        </VBox>
-    </center>
-</BorderPane>
+<!--        <HBox>-->
+
+<!--            <TextField fx:id="answer" promptText="Answer:" />-->
+
+<!--            <Button text="Check Answer" onAction="#handleCheckAnswer" styleClass="primaryButton" />-->
+
+
+<!--        </HBox>-->
+
+<!--    </VBox>-->
+<!--</VBox>-->
+
+<?import javafx.scene.canvas.Canvas?>
+<VBox xmlns="http://javafx.com/javafx"
+      xmlns:fx="http://javafx.com/fxml"
+      fx:controller="com.example.javafx_backend_test.PracticeController"
+      prefHeight="600.0" prefWidth="900.0"
+      spacing="20" styleClass="root">
+
+    <!-- Top bar -->
+    <HBox alignment="CENTER" spacing="20" styleClass="top-bar">
+        <Label fx:id="timeLabel" text="5m 34s remaining" styleClass="info-label"/>
+        <Region HBox.hgrow="ALWAYS"/> <!-- pushes right side content -->
+        <Label fx:id="scoreLabel" text="Score 0 / 7" styleClass="info-label"/>
+        <Button text="Exit Quiz" onAction="#handleExitQuiz" styleClass="primary-button"/>
+    </HBox>
+
+    <!-- Question area -->
+    <VBox alignment="CENTER" spacing="15" VBox.vgrow="ALWAYS">
+        <ImageView fx:id="logoImage" fitWidth="300" preserveRatio="true">
+            <image>
+                <Image url="@images/example-question.png" />
+            </image>
+        </ImageView>
+    </VBox>
+
+    <!-- Answer input area -->
+    <HBox alignment="CENTER" spacing="15" styleClass="answer-group">
+        <TextField fx:id="answer" promptText="Enter your answer..." styleClass="answer-field"/>
+        <Button text="Check Answer" onAction="#handleCheckAnswer" styleClass="primary-button"/>
+    </HBox>
+
+
+    <HBox styleClass="notepad" alignment="CENTER">
+        <Canvas fx:id="notepadCanvas" width="1200" height="300"/>
+    </HBox>
+
+
+</VBox>
 

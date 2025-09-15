@@ -1,6 +1,7 @@
 package com.example.javafx_backend_test;
 
 
+import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
@@ -12,33 +13,36 @@ import java.io.IOException;
 
 public class SignInController {
 
-    @FXML private Button signOutButton;
-    @FXML private TextField regName;
-    @FXML private TextField regEmail;
-    @FXML private PasswordField regPassword;
+    @FXML private TextField registrationUsername;
+    @FXML private TextField registrationEmail;
+    @FXML private PasswordField registrationPassword;
+    @FXML private Label registrationError;
 
     @FXML private TextField loginEmail;
     @FXML private PasswordField loginPassword;
-
+    @FXML private Label loginError;
 
 
     @FXML
     private void handleRegister() throws IOException {
-        System.out.println("Registering: " + regName.getText() + ", " + regEmail.getText());
 
         // TODO: Add registration logic
 
 
-        boolean isValid = !regName.getText().isEmpty();
+        boolean isValid = !registrationUsername.getText().isEmpty();
 
 
         if (isValid) {
 
-            loadMainScene();
+            LoadScene loadScene = new LoadScene(Main.getPrimaryStage());
+            loadScene.render("main-scene.fxml", "main-styles.css");
 
+        } else {
+
+            registrationError.setText("Invalid Email or Password.");
+            registrationError.getStyleClass().add("active");
         }
     }
-
 
 
 
@@ -54,50 +58,15 @@ public class SignInController {
 
         if (isValid) {
 
-            loadMainScene();
+            LoadScene loadScene = new LoadScene(Main.getPrimaryStage());
+            loadScene.render("main-scene.fxml", "main-styles.css");
 
+
+        } else {
+            loginError.setText("Invalid Email or Password.");
+            loginError.getStyleClass().add("active");
         }
 
     }
 
-    @FXML
-    private void handleSignOut() throws IOException {
-        System.out.println("Signing out");
-
-        // TODO: Add sign out logic
-
-
-        try {
-            Stage stage = (Stage) signOutButton.getScene().getWindow();
-
-            FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("sign-in-scene.fxml"));
-            Scene scene = new Scene(fxmlLoader.load(), 1250, 750);
-            stage.setScene(scene);
-
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-
-
-    }
-
-    @FXML
-    private void handlePracticeClick() {
-        System.out.println("Going into practice mode");
-
-        // TODO: Add practice logic
-
-    }
-
-
-
-
-    private void loadMainScene() throws IOException {
-        Stage stage = (Stage) loginEmail.getScene().getWindow();
-
-        FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("main-scene.fxml"));
-        Scene scene = new Scene(fxmlLoader.load(), 1250, 750);
-
-        stage.setScene(scene);
-    }
 }

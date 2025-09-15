@@ -31,19 +31,29 @@
 
             <!-- Register Section -->
             <VBox spacing="10" alignment="TOP_LEFT">
+
                 <Label text="Register" styleClass="section-title"/>
-                <TextField fx:id="regName" promptText="Name"/>
-                <TextField fx:id="regEmail" promptText="Email"/>
-                <PasswordField fx:id="regPassword" promptText="Password"/>
-                <Button text="Register" onAction="#handleRegister"/>
+                <Label text="Sign up for a new account and start your learning journey today!" styleClass="copy" />
+
+                <TextField fx:id="registrationUsername" promptText="Username" />
+                <TextField fx:id="registrationEmail" promptText="Email" />
+                <PasswordField fx:id="registrationPassword" promptText="Password" />
+
+                <Label fx:id="registrationError" styleClass="error-text" />
+                <Button text="Register" onAction="#handleRegister" styleClass="primaryButton"/>
             </VBox>
 
             <!-- Sign In Section -->
             <VBox spacing="10" alignment="TOP_LEFT">
-                <Label text="Sign In" styleClass="section-title"/>
-                <TextField fx:id="loginEmail" promptText="Email"/>
-                <PasswordField fx:id="loginPassword" promptText="Password"/>
-                <Button text="Sign In" onAction="#handleSignIn"/>
+
+                <Label text="Sign In" styleClass="section-title" />
+                <Label text="Already have an account? Sign in with your email and password." styleClass="copy" />
+
+                <TextField fx:id="loginEmail" promptText="Email" />
+                <PasswordField fx:id="loginPassword" promptText="Password" />
+
+                <Label fx:id="loginError" styleClass="error-text" />
+                <Button text="Sign In" onAction="#handleSignIn" styleClass="primaryButton" />
             </VBox>
         </VBox>
     </center>

@@ -9,7 +9,7 @@
 
 <BorderPane xmlns="http://javafx.com/javafx"
             xmlns:fx="http://javafx.com/fxml"
-            fx:controller="com.example.javafx_backend_test.SignInController"
+            fx:controller="com.example.javafx_backend_test.MainController"
             prefHeight="400.0" prefWidth="600.0">
 
     <!-- Left side -->

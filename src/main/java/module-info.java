@@ -5,6 +5,7 @@ module com.example.javafx_backend_test {
     // ✅ Add this line so javax.imageio, java.awt, etc. are accessible
     requires java.desktop;
     requires java.logging;
+    requires java.sql;
 
     // If you use FXML with controllers in this package:
     opens com.example.javafx_backend_test to javafx.fxml;
