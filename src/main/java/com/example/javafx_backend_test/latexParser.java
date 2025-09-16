@@ -184,7 +184,7 @@ public final class latexParser {
                         st.push(new Node(wrap(l, 2) + " + " + wrap(r, 2), 2));
                     } else if ("-".equals(t.text)) {
                         Node r = st.pop(), l = st.pop();
-                        st.push(new Node(wrap(l, 2) + " - " + wrap(r, 2), 2));
+                        st.push(new Node(wrap(l, 2) + " - " + wrapSubRight(r), 2));
                     } else if ("*".equals(t.text)) {
                         Node r = st.pop(), l = st.pop();
                         st.push(new Node(wrap(l, 3) + " \\\\cdot " + wrap(r, 3), 3));
@@ -207,6 +207,10 @@ public final class latexParser {
 
     private static String wrap(Node n, int outerPrec) {
         return (n.prec < outerPrec) ? "\\\\left(" + n.latex + "\\\\right)" : n.latex;
+    }
+
+    private static String wrapSubRight(Node n) {
+        return (n.prec <= 2) ? "\\\\left(" + n.latex + "\\\\right)" : n.latex;
     }
 
     // Optional quick test
