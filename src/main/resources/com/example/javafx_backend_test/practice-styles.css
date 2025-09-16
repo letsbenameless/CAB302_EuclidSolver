@@ -1,0 +1,61 @@
+/*
+dark blue     - #00263D
+main blue     - #0897EB
+light blue    - #32B3FF
+lighter blue  - #B3ECFF
+lightest blue - #E0F7FF
+
+main yellow   - #EBE008
+light yellow  - #FFF643
+
+*/
+
+.top-bar {
+    -fx-padding: 10 0 10 0;
+    -fx-border-color: #e0e6ed;
+    -fx-border-width: 0 0 1 0;
+}
+
+.info-label {
+    -fx-font-size: 14px;
+    -fx-text-fill: #555;
+}
+
+.primary-button {
+    -fx-background-color: #0078d7;
+    -fx-text-fill: white;
+    -fx-font-size: 14px;
+    -fx-font-weight: bold;
+    -fx-padding: 8 16;
+    -fx-background-radius: 6;
+    -fx-cursor: hand;
+}
+
+.primary-button:hover {
+    -fx-background-color: #005fa3;
+}
+
+.answer-field {
+    -fx-pref-width: 250;
+    -fx-background-color: #E0F7FF;
+    -fx-background-radius: 6;
+    -fx-border-color: #0897EB;
+    -fx-border-radius: 4;
+    -fx-padding: 8;
+    -fx-text-fill: #00263D;
+    -fx-font-size: 14px;
+}
+.answer-group {
+    fx-padding: 0 30 0 0;
+}
+
+.notepad {
+    -fx-padding: 10;
+    -fx-background-color: #fffbea;
+    -fx-border-color: #ccc;
+    -fx-border-width: 2;
+    -fx-background-radius: 6;
+    -fx-border-radius: 6;
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.15), 5, 0, 2, 2);
+}
+

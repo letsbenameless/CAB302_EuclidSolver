@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.image.*?>
+
+
+<BorderPane xmlns="http://javafx.com/javafx"
+            xmlns:fx="http://javafx.com/fxml"
+            fx:controller="com.example.javafx_backend_test.SignInController"
+            prefHeight="400.0" prefWidth="600.0">
+
+    <!-- Left side -->
+    <left>
+        <StackPane styleClass="left-pane">
+            <ImageView fx:id="logoImage" fitWidth="500" preserveRatio="true">
+                <image>
+                    <Image url="@images/logo.png" />
+                </image>
+            </ImageView>
+
+        </StackPane>
+    </left>
+
+    <!-- Right side -->
+    <center>
+        <VBox alignment="CENTER_LEFT" spacing="30" styleClass="right-pane">
+
+            <!-- Register Section -->
+            <VBox spacing="10" alignment="TOP_LEFT">
+
+                <Label text="Register" styleClass="section-title"/>
+                <Label text="Sign up for a new account and start your learning journey today!" styleClass="copy" />
+
+                <TextField fx:id="registrationUsername" promptText="Username" />
+                <TextField fx:id="registrationEmail" promptText="Email" />
+                <PasswordField fx:id="registrationPassword" promptText="Password" />
+
+                <Label fx:id="registrationError" styleClass="error-text" />
+                <Button text="Register" onAction="#handleRegister" styleClass="primaryButton"/>
+            </VBox>
+
+            <!-- Sign In Section -->
+            <VBox spacing="10" alignment="TOP_LEFT">
+
+                <Label text="Sign In" styleClass="section-title" />
+                <Label text="Already have an account? Sign in with your email and password." styleClass="copy" />
+
+                <TextField fx:id="loginEmail" promptText="Email" />
+                <PasswordField fx:id="loginPassword" promptText="Password" />
+
+                <Label fx:id="loginError" styleClass="error-text" />
+                <Button text="Sign In" onAction="#handleSignIn" styleClass="primaryButton" />
+            </VBox>
+        </VBox>
+    </center>
+</BorderPane>
+
