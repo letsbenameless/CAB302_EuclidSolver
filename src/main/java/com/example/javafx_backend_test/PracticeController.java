@@ -34,6 +34,8 @@ public class PracticeController {
     @FXML private ImageView questionView;
 
     @FXML private Label answerLabel;
+    @FXML private Label latexLabel;
+    @FXML private Label plainLabel;
 
 
 
@@ -76,8 +78,8 @@ public class PracticeController {
         } else {
             questionView.setImage(new Image(buildLatexUrl(q.equationLatex)));
         }
-        /*plainLabel.setText("Plain: " + q.rearrangedRaw);
-        latexLabel.setText("LaTeX: " + q.equationLatex);*/
+        plainLabel.setText("Plain: " + q.rearrangedRaw);
+        latexLabel.setText("LaTeX: " + q.equationLatex);
         answerLabel.setText("Answer: " + q.correctAnswer);
 
         // Start preloading the subsequent questions' images.
@@ -98,7 +100,7 @@ public class PracticeController {
     }
 
     private static String buildLatexUrl(String latex) {
-        String fullLatex = "\\dpi{200}\\bg{white} \\displaystyle " + latex;
+        String fullLatex = "\\dpi{200}\\bg{transparent} \\displaystyle " + latex;
         String encoded = URLEncoder.encode(fullLatex, StandardCharsets.UTF_8).replace("+", "%20");
         return "https://latex.codecogs.com/png.latex?" + encoded;
     }
