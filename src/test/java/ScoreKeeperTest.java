@@ -1,4 +1,4 @@
-import com.example.javafx_backend_test.scoreKeeper;
+import com.example.CAB302_EuclidSolver.scoreKeeper;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 

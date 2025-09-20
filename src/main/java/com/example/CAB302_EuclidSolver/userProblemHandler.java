@@ -1,4 +1,4 @@
-package com.example.javafx_backend_test;
+package com.example.CAB302_EuclidSolver;
 
 // userProblemHandler.java
 // Purpose: Bridge between backend logic and a web front-end (MathJax/KaTeX).

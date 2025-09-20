@@ -1,5 +1,5 @@
 
-import com.example.javafx_backend_test.User;
+import com.example.CAB302_EuclidSolver.User;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 

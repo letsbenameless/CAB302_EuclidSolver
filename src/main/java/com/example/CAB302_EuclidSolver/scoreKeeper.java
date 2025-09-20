@@ -1,4 +1,4 @@
-package com.example.javafx_backend_test;
+package com.example.CAB302_EuclidSolver;
 
 public class scoreKeeper {
     private final int totalQuestions;

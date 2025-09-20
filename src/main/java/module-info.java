@@ -1,4 +1,4 @@
-module com.example.javafx_backend_test {
+module com.example.CAB302_EuclidSolver {
     requires javafx.controls;
     requires javafx.fxml;
 
@@ -8,8 +8,8 @@ module com.example.javafx_backend_test {
     requires java.sql;
 
     // If you use FXML with controllers in this package:
-    opens com.example.javafx_backend_test to javafx.fxml;
+    opens com.example.CAB302_EuclidSolver to javafx.fxml;
 
     // Export your package so other modules (and JavaFX runtime) can see it
-    exports com.example.javafx_backend_test;
+    exports com.example.CAB302_EuclidSolver;
 }

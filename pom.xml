@@ -5,9 +5,9 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>com.example</groupId>
-    <artifactId>JavaFX_Backend_Test</artifactId>
+    <artifactId>CAB302_EuclidSolver</artifactId>
     <version>1.0-SNAPSHOT</version>
-    <name>JavaFX_Backend_Test</name>
+    <name>CAB302_EuclidSolver</name>
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -61,7 +61,7 @@
                         <id>default-cli</id>
                         <configuration>
                             <mainClass>
-                                com.example.javafx_backend_test/com.example.javafx_backend_test.HelloApplication
+                                com.example.CAB302_EuclidSolver/com.example.CAB302_EuclidSolver.Main
                             </mainClass>
                             <launcher>app</launcher>
                             <jlinkZipName>app</jlinkZipName>

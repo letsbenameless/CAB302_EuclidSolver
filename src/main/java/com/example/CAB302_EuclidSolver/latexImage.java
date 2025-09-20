@@ -1,4 +1,4 @@
-package com.example.javafx_backend_test;
+package com.example.CAB302_EuclidSolver;
 
 import javax.imageio.ImageIO;
 import javax.swing.*;
