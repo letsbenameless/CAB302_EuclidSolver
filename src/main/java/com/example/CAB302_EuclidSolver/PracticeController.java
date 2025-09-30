@@ -19,6 +19,10 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Stack;
 
+import javafx.animation.KeyFrame;
+import javafx.animation.Timeline;
+import javafx.util.Duration;
+
 public class PracticeController {
 
 
@@ -32,6 +36,40 @@ public class PracticeController {
     @FXML private ImageView questionView;
 
     @FXML private Label answerLabel;
+
+
+    @FXML
+    private Label timeLabel;
+
+    private int timeSeconds = 120; // 2 minutes = 120 seconds
+    private Timeline timeline;
+
+    private void startCountdown() {
+        // Initialize label text
+        updateLabel();
+
+        timeline = new Timeline(
+            new KeyFrame(Duration.seconds(1), event -> {
+                timeSeconds--;
+                updateLabel();
+
+                if (timeSeconds <= 0) {
+                    timeline.stop();
+                    timeLabel.setText("Time's up!");
+                    checkButton.setDisable(true);
+                }
+            })
+        );
+
+        timeline.setCycleCount(Timeline.INDEFINITE);
+        timeline.play();
+    }
+
+    private void updateLabel() {
+        int minutes = timeSeconds / 60;
+        int seconds = timeSeconds % 60;
+        timeLabel.setText(String.format("%dm %02ds remaining", minutes, seconds));
+    }
 
 
 
@@ -60,6 +98,7 @@ public class PracticeController {
         if (engine.hasNextQuestion()) {
             loadNextQuestion();
             answerField.clear();
+            timeSeconds = 120;
         } else {
             checkButton.setDisable(true);
             answerField.setDisable(true);
@@ -143,6 +182,7 @@ public class PracticeController {
         imageCache = new Image[10];
 
         loadNextQuestion();
+        startCountdown();
 
         gc = notepadCanvas.getGraphicsContext2D();
 

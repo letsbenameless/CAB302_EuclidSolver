@@ -36,7 +36,7 @@ public class Main extends Application {
 
 
         // Define initial stylesheet for the first Scene
-        String stylesheet = Main.class.getResource("sign-in-styles.css").toExternalForm();
+        String stylesheet = Main.class.getResource("signin-register-styles.css").toExternalForm();
 
 
 
@@ -46,7 +46,7 @@ public class Main extends Application {
 
 
         // Set up initial Scene
-        FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("sign-in-scene.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("register-scene.fxml"));
         Scene scene = new Scene(fxmlLoader.load(), 1250, 750);
         scene.getStylesheets().add(stylesheet);
 

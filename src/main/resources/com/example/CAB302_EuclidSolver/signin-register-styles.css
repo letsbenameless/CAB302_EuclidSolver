@@ -39,6 +39,18 @@ light yellow  - #FFF643
     -fx-font-weight: bold;
     -fx-text-fill: #00263D;
 }
+.section-title-disabled {
+    -fx-font-family: "Arial";
+    -fx-font-size: 26px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #00263D;
+    -fx-opacity: .5;
+    -fx-cursor: hand;
+}
+.section-title-disabled:hover {
+    -fx-opacity: .7;
+}
+
 .copy {
     -fx-font-family: "Arial";
     -fx-font-size: 16px;

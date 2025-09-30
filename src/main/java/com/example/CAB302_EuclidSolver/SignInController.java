@@ -22,6 +22,19 @@ public class SignInController {
 
 
     @FXML
+    private void handleRegisterScreen() throws IOException {
+        LoadScene loadScene = new LoadScene(Main.getPrimaryStage());
+        loadScene.render("register-scene.fxml", "signin-register-styles.css");
+    }
+
+    @FXML
+    private void handleSignInScreen() throws IOException {
+        LoadScene loadScene = new LoadScene(Main.getPrimaryStage());
+        loadScene.render("sign-in-scene.fxml", "signin-register-styles.css");
+    }
+
+
+    @FXML
     private void handleRegister() throws IOException {
 
         // Empty Fields

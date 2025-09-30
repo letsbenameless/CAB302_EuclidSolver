@@ -16,7 +16,7 @@ public class MainController {
         // TODO: Add sign out logic
 
         LoadScene loadScene = new LoadScene(Main.getPrimaryStage());
-        loadScene.render("sign-in-scene.fxml", "sign-in-styles.css");
+        loadScene.render("sign-in-scene.fxml", "signin-register-styles.css");
 
 
     }
