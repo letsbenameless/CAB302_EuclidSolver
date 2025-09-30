@@ -7,11 +7,6 @@ import java.io.IOException;
 
 public class MainController {
 
-    @FXML private Button practiceLink;
-
-    @FXML private Button signOutButton;
-
-
 
 
     @FXML

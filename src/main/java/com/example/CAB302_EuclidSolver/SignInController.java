@@ -71,7 +71,6 @@ public class SignInController {
     @FXML
     private void handleSignIn() throws IOException {
         System.out.println("Signing in with: " + loginEmail.getText());
-        System.out.println(userDAO.getUserByUsername("andre"));
 
         // Empty Fields
         if (

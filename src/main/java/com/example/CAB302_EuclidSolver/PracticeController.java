@@ -139,8 +139,8 @@ public class PracticeController {
     @FXML
     private void initialize() {
 
-        engine = new quizGenerator(30);
-        imageCache = new Image[30];
+        engine = new quizGenerator(10);
+        imageCache = new Image[10];
 
         loadNextQuestion();
 

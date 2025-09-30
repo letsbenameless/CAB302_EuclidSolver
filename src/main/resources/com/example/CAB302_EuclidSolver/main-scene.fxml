@@ -7,19 +7,77 @@
 <?import javafx.scene.layout.*?>
 
 
-<BorderPane xmlns="http://javafx.com/javafx"
-            xmlns:fx="http://javafx.com/fxml"
-            fx:controller="com.example.CAB302_EuclidSolver.MainController"
-            prefHeight="400.0" prefWidth="600.0">
+<?import javafx.geometry.Insets?>
+<VBox xmlns="http://javafx.com/javafx"
+    xmlns:fx="http://javafx.com/fxml"
+    fx:controller="com.example.CAB302_EuclidSolver.MainController"
+    prefHeight="400.0" prefWidth="600.0"
+    styleClass="root">
 
-    <!-- Left side -->
-    <left>
-        <FlowPane styleClass="left-pane">
-            <Label text="MAIN SCENE" styleClass="logo-text"/>
+    <!-- Top Bar -->
+    <BorderPane styleClass="top-bar">
+        <left>
+            <Label text="Euclid Solver" styleClass="title-label"/>
+        </left>
+        <right>
+            <HBox alignment="CENTER_RIGHT" spacing="10">
+                <Button fx:id="profileBtn" text="Profile" styleClass="primaryButton"/>
+                <Button onAction="#handleSignOut" text="Sign Out" styleClass="primaryButton"/>
+            </HBox>
+        </right>
+        <padding>
+            <Insets top="10" right="10" bottom="10" left="10"/>
+        </padding>
+    </BorderPane>
 
-            <Button fx:id="signOutButton" text="Sign Out" onAction="#handleSignOut" />
 
-            <Button text="Practice" onAction="#handlePracticeClick" />
-        </FlowPane>
-    </left>
-</BorderPane>
+    <HBox alignment="CENTER">
+        <Label text="Homepage" styleClass="section-title"/>
+    </HBox>
+
+
+    <!-- Feature Buttons -->
+    <GridPane alignment="CENTER" hgap="20" vgap="20">
+        <children>
+            <Button onAction="#handlePracticeClick" prefWidth="200" prefHeight="100" styleClass="feature-btn">
+                <graphic>
+                    <VBox alignment="CENTER" spacing="5">
+                        <Label text="🎯" styleClass="icon-label"/>
+                        <Label text="Practice" styleClass="text-label"/>
+                    </VBox>
+                </graphic>
+            </Button>
+
+            <Button fx:id="friendsBtn" prefWidth="200" prefHeight="100" styleClass="feature-btn" GridPane.columnIndex="1">
+                <graphic>
+                    <VBox alignment="CENTER" spacing="5">
+                        <Label text="👥" styleClass="icon-label"/>
+                        <Label text="Friends" styleClass="text-label"/>
+                    </VBox>
+                </graphic>
+            </Button>
+
+            <Button fx:id="clockBtn" prefWidth="200" prefHeight="100" styleClass="feature-btn" GridPane.rowIndex="1">
+                <graphic>
+                    <VBox alignment="CENTER" spacing="5">
+                        <Label text="⏰" styleClass="icon-label"/>
+                        <Label text="Clock Test" styleClass="text-label"/>
+                    </VBox>
+                </graphic>
+            </Button>
+
+            <Button fx:id="notebookBtn" prefWidth="200" prefHeight="100" styleClass="feature-btn" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                <graphic>
+                    <VBox alignment="CENTER" spacing="5">
+                        <Label text="📒" styleClass="icon-label"/>
+                        <Label text="Notebook" styleClass="text-label"/>
+                    </VBox>
+                </graphic>
+            </Button>
+        </children>
+    </GridPane>
+
+    <padding>
+        <Insets top="20" right="20" bottom="20" left="20"/>
+    </padding>
+</VBox>
