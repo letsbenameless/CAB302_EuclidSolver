@@ -10,7 +10,7 @@
 
 <BorderPane xmlns="http://javafx.com/javafx"
             xmlns:fx="http://javafx.com/fxml"
-            fx:controller="com.example.CAB302_EuclidSolver.SignInController"
+            fx:controller="com.CAB302_EuclidSolver.controller.SignInController"
             prefHeight="400.0" prefWidth="600.0">
 
     <!-- Left side -->
@@ -18,7 +18,7 @@
         <StackPane styleClass="left-pane">
             <ImageView fx:id="logoImage" fitWidth="500" preserveRatio="true">
                 <image>
-                    <Image url="@images/logo.png" />
+                    <Image url="@../../images/logo.png" />
                 </image>
             </ImageView>
 
@@ -29,23 +29,25 @@
     <center>
         <VBox alignment="CENTER_LEFT" spacing="30" styleClass="right-pane">
 
-            <!-- Sign In Section -->
+            <!-- Register Section -->
             <VBox spacing="10" alignment="TOP_LEFT">
 
                 <HBox spacing="20" alignment="BOTTOM_LEFT">
-                    <Label text="Register" styleClass="section-title-disabled" onMouseClicked="#handleRegisterScreen" />
+                    <Label text="Register" styleClass="section-title"/>
                     <Label text="|" styleClass="section-title" />
-                    <Label text="Sign In" styleClass="section-title" />
+                    <Label text="Sign In" styleClass="section-title-disabled" onMouseClicked="#handleSignInScreen" />
                 </HBox>
 
-                <Label text="Already have an account? Sign in with your email and password." styleClass="copy" />
+                <Label text="Sign up for a new account and start your learning journey today!" styleClass="copy" />
 
-                <TextField fx:id="loginEmail" promptText="Email" />
-                <PasswordField fx:id="loginPassword" promptText="Password" />
+                <TextField fx:id="registrationUsername" promptText="Username" />
+                <TextField fx:id="registrationEmail" promptText="Email" />
+                <PasswordField fx:id="registrationPassword" promptText="Password" />
 
-                <Label fx:id="loginError" styleClass="error-text" />
-                <Button text="Sign In" onAction="#handleSignIn" styleClass="primaryButton" />
+                <Label fx:id="registrationError" styleClass="error-text" />
+                <Button text="Register" onAction="#handleRegister" styleClass="primaryButton"/>
             </VBox>
+
         </VBox>
     </center>
 </BorderPane>

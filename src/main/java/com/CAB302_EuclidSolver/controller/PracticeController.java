@@ -1,5 +1,8 @@
-package com.example.CAB302_EuclidSolver;
+package com.CAB302_EuclidSolver.controller;
 
+import com.CAB302_EuclidSolver.Main;
+import com.CAB302_EuclidSolver.model.question.quizGenerator;
+import com.CAB302_EuclidSolver.util.LoadScene;
 import javafx.fxml.FXML;
 import javafx.geometry.Point2D;
 import javafx.scene.canvas.Canvas;

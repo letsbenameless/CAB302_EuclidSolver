@@ -1,4 +1,4 @@
-package com.example.CAB302_EuclidSolver;
+package com.CAB302_EuclidSolver.model.question;
 
 public class scoreKeeper {
     private final int totalQuestions;

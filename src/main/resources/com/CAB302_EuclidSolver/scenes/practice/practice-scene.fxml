@@ -11,7 +11,7 @@
 <?import javafx.scene.canvas.Canvas?>
 <VBox xmlns="http://javafx.com/javafx"
       xmlns:fx="http://javafx.com/fxml"
-      fx:controller="com.example.CAB302_EuclidSolver.PracticeController"
+      fx:controller="com.CAB302_EuclidSolver.controller.PracticeController"
       prefHeight="600.0" prefWidth="900.0"
       spacing="20" styleClass="root">
 
@@ -27,7 +27,7 @@
     <VBox alignment="CENTER" spacing="15" VBox.vgrow="ALWAYS">
         <ImageView fx:id="questionView" fitWidth="300" preserveRatio="true">
             <image>
-                <Image url="@images/example-question.png" />
+                <Image url="@../../images/example-question.png" />
             </image>
         </ImageView>
     </VBox>

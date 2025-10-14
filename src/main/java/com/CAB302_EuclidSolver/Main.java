@@ -1,11 +1,10 @@
-package com.example.CAB302_EuclidSolver;
+package com.CAB302_EuclidSolver;
 
+import com.CAB302_EuclidSolver.model.database.DatabaseConnection;
+import com.CAB302_EuclidSolver.model.database.UserDAO;
+import com.CAB302_EuclidSolver.util.LoadScene;
 import javafx.application.Application;
 
-import java.sql.Connection;
-
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Scene;
 import javafx.scene.image.Image;
 import javafx.stage.Stage;
 
@@ -28,16 +27,16 @@ public class Main extends Application {
 
 
         // Establish Database connection
-        Connection connection = DatabaseConnection.getInstance();
+        DatabaseConnection.getInstance();
         UserDAO userDAO = new UserDAO();
+
 
         // Create initial database tables
         userDAO.createUserTable();
 
 
-        // Define initial stylesheet for the first Scene
-        String stylesheet = Main.class.getResource("signin-register-styles.css").toExternalForm();
-
+        // Define global and initial stylesheet for the first Scene
+        /*String globalStylesheet = Main.class.getResource("styles/globals.css").toExternalForm();*/
 
 
         // Define Primary Stage Branding
@@ -45,21 +44,19 @@ public class Main extends Application {
         primaryStage.getIcons().add(new Image(Main.class.getResourceAsStream("images/favicon.png")));
 
 
-        // Set up initial Scene
-        FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("register-scene.fxml"));
-        Scene scene = new Scene(fxmlLoader.load(), 1250, 750);
-        scene.getStylesheets().add(stylesheet);
-
-
-        // Display Sign In initial Scene
-        primaryStage.setScene(scene);
-        primaryStage.show();
+        // Set up initial scene
+        LoadScene.getInstance().render("scenes/signin/signin-scene.fxml", "scenes/signin/signin-styles.css");
 
 
         //quizGenerator.main(args);
 
     }
 
+
+    /**
+     * This is a method consumed within the LoadScene SINGLETON
+     * Should always refer back to the primary stage for scene rendering
+     */
     public static Stage getPrimaryStage() {
         return Main.primaryStage;
     }

@@ -10,7 +10,7 @@
 <?import javafx.geometry.Insets?>
 <VBox xmlns="http://javafx.com/javafx"
     xmlns:fx="http://javafx.com/fxml"
-    fx:controller="com.example.CAB302_EuclidSolver.MainController"
+    fx:controller="com.CAB302_EuclidSolver.controller.MainController"
     prefHeight="400.0" prefWidth="600.0"
     styleClass="root">
 

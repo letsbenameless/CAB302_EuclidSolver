@@ -1,5 +1,5 @@
 
-import com.example.CAB302_EuclidSolver.User;
+import com.CAB302_EuclidSolver.model.user.User;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 

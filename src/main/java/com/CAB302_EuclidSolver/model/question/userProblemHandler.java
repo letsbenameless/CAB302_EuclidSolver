@@ -1,4 +1,4 @@
-package com.example.CAB302_EuclidSolver;
+package com.CAB302_EuclidSolver.model.question;
 
 // userProblemHandler.java
 // Purpose: Bridge between backend logic and a web front-end (MathJax/KaTeX).

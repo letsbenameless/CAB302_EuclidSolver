@@ -1,4 +1,4 @@
-package com.example.CAB302_EuclidSolver;
+package com.CAB302_EuclidSolver.model.user;
 
 public class User {
     private int userID;

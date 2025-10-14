@@ -1,4 +1,4 @@
-package com.example.CAB302_EuclidSolver;
+package com.CAB302_EuclidSolver.model.user;
 
 //USER SESSION SINGLETON
 public class UserSession {

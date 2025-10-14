@@ -1,6 +1,10 @@
-package com.example.CAB302_EuclidSolver;
+package com.CAB302_EuclidSolver.controller;
 
 
+import com.CAB302_EuclidSolver.Main;
+import com.CAB302_EuclidSolver.model.database.UserDAO;
+import com.CAB302_EuclidSolver.model.user.User;
+import com.CAB302_EuclidSolver.util.LoadScene;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 
@@ -24,13 +28,13 @@ public class SignInController {
     @FXML
     private void handleRegisterScreen() throws IOException {
         LoadScene loadScene = new LoadScene(Main.getPrimaryStage());
-        loadScene.render("register-scene.fxml", "signin-register-styles.css");
+        loadScene.render("register-scene.fxml", "signin-styles.css");
     }
 
     @FXML
     private void handleSignInScreen() throws IOException {
         LoadScene loadScene = new LoadScene(Main.getPrimaryStage());
-        loadScene.render("sign-in-scene.fxml", "signin-register-styles.css");
+        loadScene.render("signin-scene.fxml", "signin-styles.css");
     }
 
 

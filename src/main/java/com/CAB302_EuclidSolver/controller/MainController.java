@@ -1,7 +1,8 @@
-package com.example.CAB302_EuclidSolver;
+package com.CAB302_EuclidSolver.controller;
 
+import com.CAB302_EuclidSolver.Main;
+import com.CAB302_EuclidSolver.util.LoadScene;
 import javafx.fxml.FXML;
-import javafx.scene.control.*;
 
 import java.io.IOException;
 
@@ -16,7 +17,7 @@ public class MainController {
         // TODO: Add sign out logic
 
         LoadScene loadScene = new LoadScene(Main.getPrimaryStage());
-        loadScene.render("sign-in-scene.fxml", "signin-register-styles.css");
+        loadScene.render("signin-scene.fxml", "signin-styles.css");
 
 
     }
