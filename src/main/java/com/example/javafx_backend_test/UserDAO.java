@@ -25,6 +25,8 @@ public class UserDAO {
             System.err.println(ex);
         }
 
+        public User users;
+
         public void insert(User users) {
             try {
                 PreparedStatement insertUser = connection.prepareStatement(
@@ -39,10 +41,6 @@ public class UserDAO {
             }
 
         }
-
-
-
-
 
 
     }

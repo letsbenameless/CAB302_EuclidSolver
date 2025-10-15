@@ -7,9 +7,10 @@ public class Main {
         Connection connection = DatabaseConnection.getInstance();
         UserDAO userDAO = new UserDAO();
         userDAO.createUserTable();
-
         userDAO.close();
         // everything in between these 2 comments are for creating user database
+        NoteDAO noteDAO = new NoteDAO();
+        noteDAO.createNoteTable();
 
         quizUI.main(args);
     }
