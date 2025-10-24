@@ -44,6 +44,14 @@
                 <PasswordField fx:id="loginPassword" promptText="Password" />
 
                 <Label fx:id="loginError" styleClass="error-text" />
+
+
+                <HBox alignment="CENTER_LEFT">
+                    <Label text="Forgot your password?" styleClass="copy" />
+                    <Label onMouseClicked="#handleForgotPassword" text="Click here to reset it." styleClass="copy-underline" />
+                </HBox>
+
+
                 <Button text="Sign In" onAction="#handleSignIn" styleClass="primaryButton" />
             </VBox>
         </VBox>

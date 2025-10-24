@@ -20,9 +20,12 @@ public class LoadScene {
     private Stage currentStage;
 
     // Private constructor to comply with SINGLETON behaviour
-    private LoadScene() {
+    protected LoadScene() {
         currentStage = Main.getPrimaryStage();
     }
+
+
+
 
     // SINGLETON instance getter
     public static LoadScene getInstance() {
@@ -36,10 +39,12 @@ public class LoadScene {
         return instance;
     }
 
+
     // SINGLETON stage setter
     public void setStage(Stage stage) {
         this.currentStage = stage;
     }
+
 
     // Main render method
     public void render(String sceneFXML, String sceneStyles) throws IOException {
@@ -47,10 +52,15 @@ public class LoadScene {
             throw new IllegalStateException("Stage has not been set in LoadScene!");
         }
 
+        String globalStylesheet = Main.class.getResource("styles/globals.css").toExternalForm();
         String stylesheet = Main.class.getResource(sceneStyles).toExternalForm();
+
         FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource(sceneFXML));
         Scene scene = new Scene(fxmlLoader.load(), 1250, 750);
+
+        scene.getStylesheets().add(globalStylesheet);
         scene.getStylesheets().add(stylesheet);
+
 
         currentStage.setScene(scene);
         currentStage.show();

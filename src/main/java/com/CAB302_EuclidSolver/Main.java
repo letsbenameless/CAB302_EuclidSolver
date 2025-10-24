@@ -35,20 +35,14 @@ public class Main extends Application {
         userDAO.createUserTable();
 
 
-        // Define global and initial stylesheet for the first Scene
-        /*String globalStylesheet = Main.class.getResource("styles/globals.css").toExternalForm();*/
-
 
         // Define Primary Stage Branding
         primaryStage.setTitle("EuclidSolver");
         primaryStage.getIcons().add(new Image(Main.class.getResourceAsStream("images/favicon.png")));
 
 
-        // Set up initial scene
+        // Set up initial scene and global styles
         LoadScene.getInstance().render("scenes/signin/signin-scene.fxml", "scenes/signin/signin-styles.css");
-
-
-        //quizGenerator.main(args);
 
     }
 

@@ -10,7 +10,7 @@
 
 <BorderPane xmlns="http://javafx.com/javafx"
             xmlns:fx="http://javafx.com/fxml"
-            fx:controller="com.CAB302_EuclidSolver.controller.SignInController"
+            fx:controller="com.CAB302_EuclidSolver.controller.RegisterController"
             prefHeight="400.0" prefWidth="600.0">
 
     <!-- Left side -->

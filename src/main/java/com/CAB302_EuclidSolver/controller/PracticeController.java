@@ -78,8 +78,7 @@ public class PracticeController {
 
     @FXML
     private void handleExitQuiz() throws IOException {
-        LoadScene loadScene = new LoadScene(Main.getPrimaryStage());
-        loadScene.render("main-scene.fxml", "main-styles.css");
+        LoadScene.getInstance().render("scenes/main/main-scene.fxml", "scenes/main/main-styles.css");
     }
 
 

@@ -11,7 +11,7 @@ light yellow  - #FFF643
 */
 
 .primaryButton {
-    -fx-background-color: #0078d7;
+    -fx-background-color: -fx-main-600;
     -fx-text-fill: white;
     -fx-font-size: 14px;
     -fx-font-weight: bold;
@@ -20,16 +20,16 @@ light yellow  - #FFF643
     -fx-cursor: hand;
 }
 .primaryButton:hover {
-    -fx-background-color: #005fa3;
+    -fx-background-color: -fx-main-600-hover;
 }
 
 .left-pane {
-    -fx-background-color: #e6f7ff; /* light blue */
+    -fx-background-color: -fx-main-100;
     -fx-alignment: center;
 }
 
 .right-pane {
-    -fx-background-color: #b3e6ff; /* darker blue */
+    -fx-background-color: -fx-main-200; /* darker blue */
     -fx-padding: 40;
 }
 
@@ -37,13 +37,13 @@ light yellow  - #FFF643
     -fx-font-family: "Arial";
     -fx-font-size: 26px;
     -fx-font-weight: bold;
-    -fx-text-fill: #00263D;
+    -fx-text-fill: -fx-main-800;
 }
 .section-title-disabled {
     -fx-font-family: "Arial";
     -fx-font-size: 26px;
     -fx-font-weight: bold;
-    -fx-text-fill: #00263D;
+    -fx-text-fill: -fx-main-800;
     -fx-opacity: .5;
     -fx-cursor: hand;
 }
@@ -54,13 +54,23 @@ light yellow  - #FFF643
 .copy {
     -fx-font-family: "Arial";
     -fx-font-size: 16px;
-    -fx-text-fill: #00263D;
+    -fx-text-fill: -fx-main-800;
+}
+.copy-underline {
+    -fx-font-family: "Arial";
+    -fx-font-size: 16px;
+    -fx-text-fill: -fx-main-800;
+    -fx-underline: true;
+    -fx-cursor: hand;
+}
+.copy-underline:hover {
+    -fx-text-fill: -fx-main-600;
 }
 
 .error-text {
     -fx-font-family: "Arial";
     -fx-font-size: 16px;
-    -fx-text-fill: #FF1C20;
+    -fx-text-fill: -fx-error-400;
     -fx-opacity: 0;
     -fx-max-height: 0;
     -fx-min-height: 0;
@@ -76,10 +86,10 @@ light yellow  - #FFF643
 
 .text-field, .password-field {
     -fx-pref-width: 250;
-    -fx-background-color: #E0F7FF;
+    -fx-background-color: -fx-main-100;
     -fx-background-radius: 6;
-    -fx-border-color: #0897EB;
+    -fx-border-color: -fx-main-500;
     -fx-border-radius: 4;
     -fx-padding: 8;
-    -fx-text-fill: #00263D;
+    -fx-text-fill: -fx-main-800;
 }

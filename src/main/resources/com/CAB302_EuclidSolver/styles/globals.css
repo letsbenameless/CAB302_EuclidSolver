@@ -1,0 +1,16 @@
+
+* {
+   -fx-main-800: #00263D;
+   -fx-main-600: #1070B5;
+   -fx-main-600-hover: #005fa3;
+   -fx-main-500: #0897EB;
+   -fx-main-400: #32B3FF;
+   -fx-main-200: #B3ECFF;
+   -fx-main-100: #E0F7FF;
+
+   -fx-accent-500: #EBE008;
+   -fx-accent-400: #FFF643;
+
+
+   -fx-error-400: #FF1C20;
+}
