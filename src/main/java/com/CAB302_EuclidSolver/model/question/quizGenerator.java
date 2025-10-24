@@ -50,14 +50,18 @@ public class quizGenerator {
     private int currentIndex = -1;
 
     private static final int PRELOAD_COUNT = 3;
+    private final String difficulty;
+
+    public quizGenerator(int numQuestions, String difficulty) {
+        this.NUM_QUESTIONS = numQuestions;
+        this.difficulty = difficulty;
+        this.scoreKeeper = new scoreKeeper(numQuestions);
+        this.questions = new ArrayList<>(NUM_QUESTIONS);
+        generateUpTo(PRELOAD_COUNT);
+    }
 
     public quizGenerator(int numQuestions) {
-        this.NUM_QUESTIONS = numQuestions;
-        this.scoreKeeper = new scoreKeeper(numQuestions);
-
-        // Pre-generate all questions so the UI can preload images, etc.
-        questions = new ArrayList<>(NUM_QUESTIONS);
-        generateUpTo(PRELOAD_COUNT);
+        this(numQuestions, "hard"); // default to hard mode
     }
 
     // ------ UI-friendly API ------
@@ -152,7 +156,7 @@ public class quizGenerator {
     private void generateUpTo(int targetCount) {
         int target = Math.min(targetCount, NUM_QUESTIONS);
         while (questions.size() < target) {
-            questions.add(userProblemHandler.nextQuestion());
+            questions.add(userProblemHandler.nextQuestion(difficulty));
         }
     }
 

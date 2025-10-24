@@ -35,21 +35,21 @@ public class userProblemHandler {
      * - Uses GenerateRearrangedForm to get "a = ( ... )"
      * - Converts that to LaTeX via latexParser for front-end rendering
      */
-    public static QuestionDTO nextQuestion() {
-        String[] pair = problemGenerator.generate(); // [expr, answer]
+    public static QuestionDTO nextQuestion(String difficulty) {
+        String[] pair = problemGenerator.generate(difficulty); // [expr, answer]
         String expr = pair[0];
         String answerStr = pair[1];
         double answer = Double.parseDouble(answerStr);
 
-        // Rearrange to "a = ( ... )"
         String rearranged = GenerateRearrangedForm.from(expr, answerStr);
-
-        // Convert the entire equation to LaTeX with the parser (handles whitespace, ops, sqrt, ^, frac, etc.)
         String equationLatex = normalizeLatex(latexParser.toLatex(rearranged));
 
         double tolerance = DEFAULT_TOL;
-
         return new QuestionDTO(equationLatex, answerStr, answer, tolerance, expr, rearranged);
+    }
+
+    public static QuestionDTO nextQuestion() {
+        return nextQuestion("hard");
     }
 
     /**
