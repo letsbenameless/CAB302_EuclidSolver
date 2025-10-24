@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+
+<?import javafx.geometry.Insets?>
+<VBox xmlns="http://javafx.com/javafx"
+    xmlns:fx="http://javafx.com/fxml"
+    fx:controller="com.CAB302_EuclidSolver.controller.MainController"
+    prefHeight="400.0" prefWidth="600.0"
+    styleClass="root">
+
+    <!-- Top Bar -->
+    <BorderPane styleClass="top-bar">
+        <left>
+            <Label text="Euclid Solver" styleClass="title-label"/>
+        </left>
+        <right>
+            <HBox alignment="CENTER_RIGHT" spacing="10">
+                <Button fx:id="profileBtn" text="Profile" styleClass="primaryButton"/>
+                <Button onAction="#handleSignOut" text="Sign Out" styleClass="primaryButton"/>
+            </HBox>
+        </right>
+        <padding>
+            <Insets top="10" right="10" bottom="10" left="10"/>
+        </padding>
+    </BorderPane>
+
+
+    <HBox alignment="CENTER">
+        <Label text="Homepage" styleClass="section-title"/>
+    </HBox>
+
+
+    <!-- Feature Buttons -->
+    <GridPane alignment="CENTER" hgap="20" vgap="20">
+        <children>
+            <Button onAction="#handlePracticeClick" prefWidth="200" prefHeight="100" styleClass="feature-btn">
+                <graphic>
+                    <VBox alignment="CENTER" spacing="5">
+                        <Label text="🎯" styleClass="icon-label"/>
+                        <Label text="Practice" styleClass="text-label"/>
+                    </VBox>
+                </graphic>
+            </Button>
+
+            <Button fx:id="friendsBtn" prefWidth="200" prefHeight="100" styleClass="feature-btn" GridPane.columnIndex="1">
+                <graphic>
+                    <VBox alignment="CENTER" spacing="5">
+                        <Label text="👥" styleClass="icon-label"/>
+                        <Label text="Friends" styleClass="text-label"/>
+                    </VBox>
+                </graphic>
+            </Button>
+
+            <Button fx:id="clockBtn" prefWidth="200" prefHeight="100" styleClass="feature-btn" GridPane.rowIndex="1">
+                <graphic>
+                    <VBox alignment="CENTER" spacing="5">
+                        <Label text="⏰" styleClass="icon-label"/>
+                        <Label text="Clock Test" styleClass="text-label"/>
+                    </VBox>
+                </graphic>
+            </Button>
+
+            <Button fx:id="notebookBtn" prefWidth="200" prefHeight="100" styleClass="feature-btn" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                <graphic>
+                    <VBox alignment="CENTER" spacing="5">
+                        <Label text="📒" styleClass="icon-label"/>
+                        <Label text="Notebook" styleClass="text-label"/>
+                    </VBox>
+                </graphic>
+            </Button>
+        </children>
+    </GridPane>
+
+    <padding>
+        <Insets top="20" right="20" bottom="20" left="20"/>
+    </padding>
+</VBox>
