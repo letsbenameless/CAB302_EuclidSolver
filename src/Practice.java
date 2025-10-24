@@ -13,7 +13,7 @@ public class Practice {
 
         // ==== Top Bar with Buttons ====
         Label titleLabel = new Label("Euclid Solver");
-        titleLabel.setStyle("-fx-font-size: 20px; -fx-font-weight: bold;");
+        titleLabel.setStyle("-fx-font-size: 21px; -fx-font-weight: bold;");
 
         // Home button
         Button homeBtn = new Button("🏠");
