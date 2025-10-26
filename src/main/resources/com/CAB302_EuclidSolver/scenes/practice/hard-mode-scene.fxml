@@ -11,7 +11,7 @@
 <?import javafx.scene.canvas.Canvas?>
 <VBox xmlns="http://javafx.com/javafx"
       xmlns:fx="http://javafx.com/fxml"
-      fx:controller="com.CAB302_EuclidSolver.controller.PracticeController"
+      fx:controller="com.CAB302_EuclidSolver.controller.PracticeHardModeController"
       prefHeight="600.0" prefWidth="900.0"
       spacing="20" styleClass="root">
 

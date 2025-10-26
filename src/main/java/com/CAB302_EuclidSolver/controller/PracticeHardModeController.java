@@ -1,6 +1,5 @@
 package com.CAB302_EuclidSolver.controller;
 
-import com.CAB302_EuclidSolver.Main;
 import com.CAB302_EuclidSolver.model.database.UserDAO;
 import com.CAB302_EuclidSolver.model.question.quizGenerator;
 import com.CAB302_EuclidSolver.model.user.User;
@@ -26,11 +25,7 @@ import java.util.List;
 import java.util.Optional;
 import java.util.Stack;
 
-import javafx.animation.KeyFrame;
-import javafx.animation.Timeline;
-import javafx.util.Duration;
-
-public class PracticeController {
+public class PracticeHardModeController {
 
 
     private quizGenerator engine;
@@ -65,6 +60,7 @@ public class PracticeController {
         if (q == null) {
             return;
         }
+
         boolean isAnswerCorrect = engine.submitAnswer(answerField.getText());
         scoreLabel.setText("Score: " + engine.getScoreKeeper().getCorrect() + "/" + engine.getScoreKeeper().getAttempted());
 
@@ -73,11 +69,10 @@ public class PracticeController {
             User user = optionalUser.orElse(null);
 
             assert user != null;
-            user.setUserXP(user.getUserXP() + 2);
-            user.setTotalQuestionsAnswered(user.getTotalQuestionsAnswered() + 1);
+            user.setUserXP(user.getUserXP() + 8);
+            user.setTotalHardQuestionsAnswered(user.getTotalHardQuestionsAnswered() + 1);
             userDAO.updateUser(user);
         }
-
 
         if (engine.hasNextQuestion()) {
             loadNextQuestion();
@@ -164,7 +159,7 @@ public class PracticeController {
     @FXML
     private void initialize() {
 
-        engine = new quizGenerator(10, "easy");
+        engine = new quizGenerator(10, "hard");
         imageCache = new Image[10];
 
         loadNextQuestion();

@@ -1,16 +1,76 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
-<?import javafx.scene.control.*?>
+<?import javafx.scene.control.Label?>
 <?import javafx.scene.layout.*?>
 
-<VBox xmlns="http://javafx.com/javafx"
-            xmlns:fx="http://javafx.com/fxml"
-            fx:controller="com.CAB302_EuclidSolver.controller.ProfileController"
-            prefHeight="400.0" prefWidth="600.0">
+<?import javafx.scene.shape.Circle?>
+<?import javafx.scene.control.Button?>
+<?import javafx.geometry.Insets?>
 
+<VBox xmlns:fx="http://javafx.com/fxml"
+      fx:controller="com.CAB302_EuclidSolver.controller.ProfileController"
+      alignment="TOP_CENTER"
+      styleClass="root">
 
+    <!-- Top Bar -->
+    <BorderPane styleClass="top-bar">
+        <left>
+            <Label text="Euclid Solver" styleClass="title-label"/>
+        </left>
+        <right>
+            <HBox alignment="CENTER_RIGHT" spacing="10">
+                <Button onAction="#handleMainPage" text="Back" styleClass="primaryButton"/>
+                <Button onAction="#handleSignOut" text="Sign Out" styleClass="primaryButton"/>
+            </HBox>
+        </right>
+        <padding>
+            <Insets top="10" right="10" bottom="10" left="10"/>
+        </padding>
+    </BorderPane>
 
+    <VBox spacing="20" alignment="CENTER" >
+        <!-- Header Section -->
+        <Label text="My Profile" styleClass="profile-title" />
+
+        <!-- User Info -->
+        <VBox spacing="10" alignment="CENTER">
+            <Label fx:id="usernameLabel" text="Username" styleClass="profile-username"/>
+            <Label fx:id="emailLabel" text="email@example.com" styleClass="profile-email"/>
+            <Label fx:id="xpLabel" text="Total XP: 0" styleClass="profile-xp"/>
+        </VBox>
+
+        <!-- Achievements Section -->
+        <HBox spacing="40" alignment="CENTER">
+            <!-- Circle 1 -->
+            <VBox alignment="CENTER" spacing="5">
+                <StackPane>
+                    <Circle fx:id="totalQuestionsCircle" radius="50" styleClass="achievement-circle"/>
+                    <Label fx:id="totalQuestionsLabel" text="0" styleClass="achievement-number"/>
+                </StackPane>
+                <Label text="Total Questions" styleClass="achievement-label"/>
+            </VBox>
+
+            <!-- Circle 2 -->
+            <VBox alignment="CENTER" spacing="5">
+                <StackPane>
+                    <Circle fx:id="hardModeCircle" radius="50" styleClass="achievement-circle"/>
+                    <Label fx:id="hardModeLabel" text="0" styleClass="achievement-number"/>
+                </StackPane>
+                <Label text="Hard Mode" styleClass="achievement-label"/>
+            </VBox>
+
+            <!-- Circle 3 -->
+            <VBox alignment="CENTER" spacing="5">
+                <StackPane>
+                    <Circle fx:id="clockModeCircle" radius="50" styleClass="achievement-circle"/>
+                    <Label fx:id="clockModeLabel" text="0" styleClass="achievement-number"/>
+                </StackPane>
+                <Label text="Clock Mode" styleClass="achievement-label"/>
+            </VBox>
+        </HBox>
+    </VBox>
+
+    <padding>
+        <Insets top="20" right="20" bottom="20" left="20"/>
+    </padding>
 </VBox>

@@ -69,8 +69,8 @@
             <Button onAction="#handleLeaderboardPage" prefWidth="200" prefHeight="100" styleClass="feature-btn" GridPane.columnIndex="1" GridPane.rowIndex="1">
                 <graphic>
                     <VBox alignment="CENTER" spacing="5">
-                        <Label text="📒" styleClass="icon-label"/>
-                        <Label text="Notebook" styleClass="text-label"/>
+                        <Label text="🏆" styleClass="icon-label"/>
+                        <Label text="Leaderboard" styleClass="text-label"/>
                     </VBox>
                 </graphic>
             </Button>

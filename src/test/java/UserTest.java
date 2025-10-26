@@ -23,8 +23,8 @@ public class UserTest {
 
     @BeforeEach
     public void setup() {
-        user1 = new User(USER1_USERID, USER1_USERNAME, USER1_EMAIL, USER1_PASSWORD);
-        user2 = new User(USER2_USERID, USER2_USERNAME, USER2_EMAIL, USER2_PASSWORD);
+        user1 = new User(USER1_USERID, USER1_USERNAME, USER1_EMAIL, USER1_PASSWORD, 0, 0, 0, 0);
+        user2 = new User(USER2_USERID, USER2_USERNAME, USER2_EMAIL, USER2_PASSWORD, 0, 0, 0, 0);
     }
 
     /*=====================================*/
@@ -97,6 +97,84 @@ public class UserTest {
         assertEquals(USER1_PASSWORD, user2.getPassword());
     }
 
+    /*=================================*/
+    /* User Scores GETTER/SETTER Tests */
+    /*=================================*/
+
+    @Test
+    void testSetAndGetUserXP1() {
+        user1.setUserXP(150);
+        assertEquals(150, user1.getUserXP(), "User XP should match the value set");
+    }
+    @Test
+    void testSetAndGetUserXP2() {
+        user2.setUserXP(300);
+        assertEquals(300, user2.getUserXP(), "User XP should match the value set for user2");
+    }
+    @Test
+    void testSetAndGetTotalQuestionsAnswered1() {
+        user1.setTotalQuestionsAnswered(42);
+        assertEquals(42, user1.getTotalQuestionsAnswered(), "Total questions answered should match the value set");
+    }
+    @Test
+    void testSetAndGetTotalQuestionsAnswered2() {
+        user2.setTotalQuestionsAnswered(100);
+        assertEquals(100, user2.getTotalQuestionsAnswered(), "Total questions answered should match the value set for user2");
+    }
+    @Test
+    void testSetAndGetTotalHardQuestionsAnswered1() {
+        user1.setTotalHardQuestionsAnswered(10);
+        assertEquals(10, user1.getTotalHardQuestionsAnswered(), "Total hard questions answered should match the value set");
+    }
+    @Test
+    void testSetAndGetTotalHardQuestionsAnswered2() {
+        user2.setTotalHardQuestionsAnswered(25);
+        assertEquals(25, user2.getTotalHardQuestionsAnswered(), "Total hard questions answered should match the value set for user2");
+    }
+    @Test
+    void testSetAndGetTotalClockQuestionsAnswered1() {
+        user1.setTotalClockQuestionsAnswered(5);
+        assertEquals(5, user1.getTotalClockQuestionsAnswered(), "Total clock questions answered should match the value set");
+    }
+    @Test
+    void testSetAndGetTotalClockQuestionsAnswered2() {
+        user2.setTotalClockQuestionsAnswered(15);
+        assertEquals(15, user2.getTotalClockQuestionsAnswered(), "Total clock questions answered should match the value set for user2");
+    }
+
+    /*=================================*/
+    /* User Scores Validation Tests */
+    /*=================================*/
+    @Test
+    void testDefaultValuesAfterInstantiation() {
+        assertAll("Default values should be zero for new users",
+                () -> assertEquals(0, user1.getUserXP()),
+                () -> assertEquals(0, user1.getTotalQuestionsAnswered()),
+                () -> assertEquals(0, user1.getTotalHardQuestionsAnswered()),
+                () -> assertEquals(0, user1.getTotalClockQuestionsAnswered()),
+                () -> assertEquals(0, user2.getUserXP()),
+                () -> assertEquals(0, user2.getTotalQuestionsAnswered()),
+                () -> assertEquals(0, user2.getTotalHardQuestionsAnswered()),
+                () -> assertEquals(0, user2.getTotalClockQuestionsAnswered())
+        );
+    }
+
+    @Test
+    void testValuesAreIndependentBetweenUsers() {
+        user1.setUserXP(100);
+        user2.setUserXP(400);
+
+        user1.setTotalQuestionsAnswered(10);
+        user2.setTotalQuestionsAnswered(90);
+
+        assertAll("Users should maintain independent values",
+                () -> assertEquals(100, user1.getUserXP()),
+                () -> assertEquals(400, user2.getUserXP()),
+                () -> assertEquals(10, user1.getTotalQuestionsAnswered()),
+                () -> assertEquals(90, user2.getTotalQuestionsAnswered())
+        );
+    }
+
 
     /*===========================*/
     /* User Public Methods Tests */
@@ -128,37 +206,37 @@ public class UserTest {
     @Test
     void testConstructorThrowsOnNullUsername() {
         assertThrows(IllegalArgumentException.class, () -> {
-            new User(1, null, USER1_EMAIL, USER1_PASSWORD);
+            new User(1, null, USER1_EMAIL, USER1_PASSWORD, 0, 0, 0, 0);
         });
     }
     @Test
     void testConstructorThrowsOnEmptyUsername() {
         assertThrows(IllegalArgumentException.class, () -> {
-            new User(2, "", USER1_EMAIL, USER1_PASSWORD);
+            new User(2, "", USER1_EMAIL, USER1_PASSWORD, 0, 0, 0, 0);
         });
     }
     @Test
     void testConstructorThrowsOnNullEmail() {
         assertThrows(IllegalArgumentException.class, () -> {
-            new User(1, USER1_USERNAME, null, USER1_PASSWORD);
+            new User(1, USER1_USERNAME, null, USER1_PASSWORD, 0, 0, 0, 0);
         });
     }
     @Test
     void testConstructorThrowsOnEmptyEmail() {
         assertThrows(IllegalArgumentException.class, () -> {
-            new User(2, USER1_USERNAME, "", USER1_PASSWORD);
+            new User(2, USER1_USERNAME, "", USER1_PASSWORD, 0, 0, 0, 0);
         });
     }
     @Test
     void testConstructorThrowsOnNullPassword() {
         assertThrows(IllegalArgumentException.class, () -> {
-            new User(1, USER1_USERNAME, USER1_EMAIL, null);
+            new User(1, USER1_USERNAME, USER1_EMAIL, null, 0, 0, 0, 0);
         });
     }
     @Test
     void testConstructorThrowsOnEmptyPassword() {
         assertThrows(IllegalArgumentException.class, () -> {
-            new User(2, USER1_USERNAME, USER1_EMAIL, "");
+            new User(2, USER1_USERNAME, USER1_EMAIL, "", 0, 0, 0, 0);
         });
     }
 }

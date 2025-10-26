@@ -21,6 +21,11 @@ light yellow  - #FFF643
     -fx-text-fill: #555;
 }
 
+.equation-prompt {
+    -fx-font-size: 16px;
+    -fx-text-fill: #555;
+}
+
 .primary-button {
     -fx-background-color: #0078d7;
     -fx-text-fill: white;

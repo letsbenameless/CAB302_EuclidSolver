@@ -1,11 +1,12 @@
 package com.CAB302_EuclidSolver.controller;
 
-import com.CAB302_EuclidSolver.Main;
 import com.CAB302_EuclidSolver.model.database.UserDAO;
 import com.CAB302_EuclidSolver.model.question.quizGenerator;
 import com.CAB302_EuclidSolver.model.user.User;
 import com.CAB302_EuclidSolver.model.user.UserSession;
 import com.CAB302_EuclidSolver.util.LoadScene;
+import javafx.animation.KeyFrame;
+import javafx.animation.Timeline;
 import javafx.fxml.FXML;
 import javafx.geometry.Point2D;
 import javafx.scene.canvas.Canvas;
@@ -17,6 +18,7 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.paint.Color;
+import javafx.util.Duration;
 
 import java.io.IOException;
 import java.net.URLEncoder;
@@ -26,11 +28,7 @@ import java.util.List;
 import java.util.Optional;
 import java.util.Stack;
 
-import javafx.animation.KeyFrame;
-import javafx.animation.Timeline;
-import javafx.util.Duration;
-
-public class PracticeController {
+public class PracticeClockModeController {
 
 
     private quizGenerator engine;
@@ -43,7 +41,42 @@ public class PracticeController {
     @FXML private ImageView questionView;
 
 
+    @FXML
+    private Label timeLabel;
+
     UserDAO userDAO = new UserDAO();
+
+    private int timeSeconds = 120; // 2 minutes = 120 seconds
+    private Timeline timeline;
+
+
+    /* CLOCK TIMER */
+    private void startCountdown() {
+        // Initialize label text
+        updateLabel();
+
+        timeline = new Timeline(
+            new KeyFrame(Duration.seconds(1), event -> {
+                timeSeconds--;
+                updateLabel();
+
+                if (timeSeconds <= 0) {
+                    timeline.stop();
+                    timeLabel.setText("Time's up!");
+                    checkButton.setDisable(true);
+                }
+            })
+        );
+
+        timeline.setCycleCount(Timeline.INDEFINITE);
+        timeline.play();
+    }
+
+    private void updateLabel() {
+        int minutes = timeSeconds / 60;
+        int seconds = timeSeconds % 60;
+        timeLabel.setText(String.format("%dm %02ds remaining", minutes, seconds));
+    }
 
 
 
@@ -73,15 +106,15 @@ public class PracticeController {
             User user = optionalUser.orElse(null);
 
             assert user != null;
-            user.setUserXP(user.getUserXP() + 2);
-            user.setTotalQuestionsAnswered(user.getTotalQuestionsAnswered() + 1);
+            user.setUserXP(user.getUserXP() + 4);
+            user.setTotalClockQuestionsAnswered(user.getTotalClockQuestionsAnswered() + 1);
             userDAO.updateUser(user);
         }
-
 
         if (engine.hasNextQuestion()) {
             loadNextQuestion();
             answerField.clear();
+            timeSeconds = 120;
             undoStack.clear();
             redoStack.clear();
             redrawAll(gc, notepadCanvas);
@@ -90,6 +123,7 @@ public class PracticeController {
             answerField.setDisable(true);
         }
     }
+
 
     private void loadNextQuestion() {
         var q = engine.nextQuestion();
@@ -168,6 +202,7 @@ public class PracticeController {
         imageCache = new Image[10];
 
         loadNextQuestion();
+        startCountdown();
 
         gc = notepadCanvas.getGraphicsContext2D();
 

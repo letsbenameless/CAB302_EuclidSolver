@@ -6,6 +6,7 @@ import com.CAB302_EuclidSolver.util.LoadScene;
 import java.io.IOException;
 
 public class UserSession implements IUserSession {
+
     private static volatile UserSession instance; // Thread-safe Singleton
     private String username;
 
@@ -22,6 +23,18 @@ public class UserSession implements IUserSession {
             }
         }
         return instance;
+    }
+
+
+    @Override
+    public void login(String username) {
+        if (isLoggedIn()) {
+            throw new SessionException("A user is already logged in. Please logout first.");
+        }
+        if (username == null || username.trim().isEmpty()) {
+            throw new SessionException("Username cannot be null or empty.");
+        }
+        this.username = username;
     }
 
 

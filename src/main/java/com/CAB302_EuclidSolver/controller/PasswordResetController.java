@@ -2,6 +2,7 @@ package com.CAB302_EuclidSolver.controller;
 
 import com.CAB302_EuclidSolver.model.database.UserDAO;
 import com.CAB302_EuclidSolver.model.user.User;
+import com.CAB302_EuclidSolver.model.user.UserSession;
 import com.CAB302_EuclidSolver.util.LoadScene;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
@@ -88,7 +89,10 @@ public class PasswordResetController {
 
                 // Resets user password and loads the main scene
                 user.setPassword(forgotPasswordNewPass.getText());
+                userDAO.updateUser(user);
+
                 LoadScene.getInstance().render("scenes/main/main-scene.fxml", "scenes/main/main-styles.css");
+                UserSession.getInstance().login(user.getUsername());
 
             }
 

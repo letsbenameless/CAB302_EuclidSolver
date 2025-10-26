@@ -10,7 +10,7 @@ light yellow  - #FFF643
 
 */
 .root {
-    -fx-background-color: #B3ECFF;
+    -fx-background-color: -fx-main-200;
 }
 .primaryButton {
     -fx-background-color: #0078d7;

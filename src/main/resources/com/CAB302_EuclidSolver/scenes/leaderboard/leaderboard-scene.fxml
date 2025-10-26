@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<?import javafx.geometry.Insets?>
+<VBox xmlns:fx="http://javafx.com/fxml" fx:controller="com.CAB302_EuclidSolver.controller.LeaderboardController" styleClass="root">
+
+    <!-- Top Bar -->
+    <BorderPane styleClass="top-bar">
+        <left>
+            <Label text="Euclid Solver" styleClass="title-label"/>
+        </left>
+        <right>
+            <HBox alignment="CENTER_RIGHT" spacing="10">
+                <Button onAction="#handleMainPage" text="Back" styleClass="primaryButton"/>
+                <Button onAction="#handleSignOut" text="Sign Out" styleClass="primaryButton"/>
+            </HBox>
+        </right>
+        <padding>
+            <Insets top="10" right="10" bottom="10" left="10"/>
+        </padding>
+    </BorderPane>
+
+    <VBox alignment="TOP_CENTER" >
+
+        <Label text="🏆 Leaderboard" styleClass="leaderboard-title"/>
+
+        <TableView fx:id="leaderboardTable">
+            <columns>
+                <TableColumn fx:id="positionColumn" text="#" prefWidth="80"/>
+                <TableColumn fx:id="usernameColumn" text="Username" prefWidth="180"/>
+                <TableColumn fx:id="totalXPColumn" text="Total XP" prefWidth="140"/>
+                <TableColumn fx:id="totalQuestionsColumn" text="Questions Answered" prefWidth="160"/>
+                <TableColumn fx:id="hardQuestionsColumn" text="Hard Questions" prefWidth="140"/>
+                <TableColumn fx:id="clockQuestionsColumn" text="Clock Questions" prefWidth="140"/>
+            </columns>
+        </TableView>
+    </VBox>
+
+    <padding>
+        <Insets top="20" right="20" bottom="20" left="20"/>
+    </padding>
+</VBox>
