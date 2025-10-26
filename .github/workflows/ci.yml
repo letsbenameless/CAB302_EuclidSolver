@@ -5,10 +5,12 @@ on:
     branches:
       - master
       - andre
+      - project-refactor
   pull_request:
     branches:
       - master
       - andre
+      - project-refactor
 
 jobs:
   build:
